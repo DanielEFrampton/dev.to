@@ -400,6 +400,10 @@ Rails.application.routes.draw do
   get "/:username/comment/:id_code/mod" => "moderations#comment"
   get "/:username/comment/:id_code/settings", to: "comments#settings"
 
+  # Routes GET requests to the "slug" for a specific article to the Show action
+  # on the Stories controller, `app/controllers/stories_controller.rb`,
+  # sending the actual strings in place of the three symbols below to that
+  # controller as values on the `params` hash/object.
   get "/:username/:slug/:view" => "stories#show",
       :constraints => { view: /moderate/ }
   get "/:username/:slug/mod" => "moderations#article"
@@ -412,6 +416,8 @@ Rails.application.routes.draw do
   get "/:username/:slug" => "stories#show"
   get "/:username" => "stories#index"
 
+  # Routes GET requests to the root directory '/' to the Index action/method
+  # on the Stories controller, `app/controllers/stories_controller.rb`
   root "stories#index"
 end
 

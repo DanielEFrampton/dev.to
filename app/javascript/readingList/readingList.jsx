@@ -30,7 +30,7 @@ const FilterText = ({ selectedTags, query, value }) => {
     </h1>
   );
 };
-
+// Could be used for inheritance with CuratedList component
 export class ReadingList extends Component {
   constructor(props) {
     super(props);
@@ -66,11 +66,12 @@ export class ReadingList extends Component {
     event.preventDefault();
 
     const { query, selectedTags } = this.state;
-
+    // Becomes truthy or falsy check
     const isStatusViewValid = this.statusViewValid();
     const newStatusView = isStatusViewValid
       ? STATUS_VIEW_ARCHIVED
       : STATUS_VIEW_VALID;
+    // Checks isStatusViewValid and sets newPath to either Reading List or Archive List
     const newPath = isStatusViewValid
       ? READING_LIST_ARCHIVE_PATH
       : READING_LIST_PATH;
@@ -88,6 +89,7 @@ export class ReadingList extends Component {
     window.history.replaceState(null, null, newPath);
   };
 
+  // This allows a user to archive posts
   toggleArchiveStatus = (event, item) => {
     event.preventDefault();
 
@@ -117,15 +119,18 @@ export class ReadingList extends Component {
     }, 1000);
   };
 
+  // Returns a truthy or falsy value
   statusViewValid() {
     const { statusView } = this.state;
     return statusView === STATUS_VIEW_VALID;
   }
 
+  // Returns either the empty Reading List or the empty Archive List depending on STATUS_VIEW_VALID value
   renderEmptyItems() {
     const { itemsLoaded, selectedTags, query } = this.state;
 
     if (itemsLoaded && this.statusViewValid()) {
+      // returns empty Reading List
       return (
         <div className="items-empty">
           <FilterText
@@ -148,7 +153,7 @@ export class ReadingList extends Component {
         </div>
       );
     }
-
+    // returns empty Archive List
     return (
       <div className="items-empty">
         <FilterText
@@ -160,6 +165,7 @@ export class ReadingList extends Component {
     );
   }
 
+  // Renders the sidebar
   render() {
     const {
       items,
@@ -170,10 +176,11 @@ export class ReadingList extends Component {
       showLoadMoreButton,
       archiving,
     } = this.state;
-
+    // provides a truthy or falsy value that decides what is rendered
     const isStatusViewValid = this.statusViewValid();
 
     const archiveButtonLabel = isStatusViewValid ? 'archive' : 'unarchive';
+    // Creates the array of articles to be rendered
     const itemsToRender = items.map(item => {
       return (
         <ItemListItem item={item}>
@@ -184,7 +191,7 @@ export class ReadingList extends Component {
         </ItemListItem>
       );
     });
-
+    // Checks to see if the isStatusViewValid is truthy and renders accordingly
     const snackBar = archiving ? (
       <div className="snackbar">
         {isStatusViewValid ? 'Archiving...' : 'Unarchiving...'}
@@ -192,6 +199,7 @@ export class ReadingList extends Component {
     ) : (
       ''
     );
+    // Renders the sidebar
     return (
       <div className="home item-list">
         <div className="side-bar">

@@ -27,10 +27,10 @@ function sendFeaturedArticleAnalytics(articleId) {
     );
   })();
 }
-
+// Displays the articles as loading with fanciness ✨
 const FeedLoading = () => (
   <div>
-    <LoadingArticle version='featured' />
+    <LoadingArticle version="featured" />
     <LoadingArticle />
     <LoadingArticle />
     <LoadingArticle />
@@ -39,7 +39,7 @@ const FeedLoading = () => (
     <LoadingArticle />
   </div>
 );
-
+// Creates a list of today's podcasts
 const PodcastEpisodes = ({ episodes }) => (
   <TodaysPodcasts>
     {episodes.map(episode => (
@@ -76,7 +76,7 @@ export const renderFeed = timeFrame => {
           // Fancy loading ✨
           return <FeedLoading />;
         }
-
+        // Defines the props that will be passed down to both kinds of article
         const commonProps = {
           reactionsIcon: feedIcons.REACTIONS_ICON,
           commentsIcon: feedIcons.COMMENTS_ICON,

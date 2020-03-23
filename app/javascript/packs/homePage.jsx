@@ -78,7 +78,9 @@ let waitingForDataLoad = setTimeout(function dataLoadedCheck() {
   if (userStatus === 'logged-in' && user !== null) {
     clearTimeout(waitingForDataLoad);
 
-    import('./homePageFeed').then(({ renderFeed }) => {
+    import('./homePageFeed').then(() => {
+      // Not sure if renderFeed is needed in the parameters here,
+      // it appears to have been destructured on the way in via import
       // We have user data, render followed tags.
       renderFeed(feedTimeFrame);
 

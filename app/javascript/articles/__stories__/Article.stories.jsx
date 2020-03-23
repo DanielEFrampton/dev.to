@@ -29,7 +29,7 @@ const ICONS = {
 const commonProps = {
   bookmarkClick: action('Saved/unsaved article'),
 };
-
+// Utilizing storybook to generate Articles
 storiesOf('Components/Article/Standard', module)
   .addDecorator(withKnobs)
   .addDecorator(articleDecorator)
@@ -122,6 +122,7 @@ storiesOf('Components/Article/Standard', module)
     />
   ));
 
+// Utilizing storybook to generate Video Articles
 storiesOf('Components/Article/Video', module)
   .addDecorator(withKnobs)
   .addDecorator(articleDecorator)
@@ -148,6 +149,7 @@ storiesOf('Components/Article/Video', module)
     />
   ));
 
+// Utilizing storybook to generate Podcast Articles
 storiesOf('Components/Article/Podcast', module)
   .addDecorator(withKnobs)
   .addDecorator(articleDecorator)

@@ -29,7 +29,7 @@ const getWaitOnUserDataHandler = ({ resolve, reject, waitTime = 20 }) => {
     setTimeout(waitingOnUserData, waitTime);
   };
 };
-
+// Getting user data
 export function getUserDataAndCsrfToken() {
   return new Promise((resolve, reject) => {
     getWaitOnUserDataHandler({ resolve, reject })();

@@ -40,9 +40,7 @@ class SidebarWidget extends Component {
       .then(json => {
         this.setState({ suggestedUsers: json });
       })
-      .catch(error => {
-        console.log(error);
-      });
+      .catch(error => console.log(error));
   }
 
   followUser(user) {

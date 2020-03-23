@@ -28,6 +28,7 @@ function sendFeaturedArticleAnalytics(articleId) {
   })();
 }
 
+// display loading article cards while loading main feed
 const FeedLoading = () => (
   <div>
     <LoadingArticle version='featured' />
@@ -39,6 +40,7 @@ const FeedLoading = () => (
     <LoadingArticle />
   </div>
 );
+
 
 const PodcastEpisodes = ({ episodes }) => (
   <TodaysPodcasts>
@@ -59,6 +61,7 @@ PodcastEpisodes.propTypes = {
 /**
  * Renders the main feed.
  */
+// renderFeed variable imported into homePage component 
 export const renderFeed = timeFrame => {
   const feedContainer = document.getElementById('homepage-feed');
 

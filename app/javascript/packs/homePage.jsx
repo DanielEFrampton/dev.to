@@ -1,5 +1,5 @@
 import { h, render } from 'preact';
-import { renderFeed } from './homePageFeed';
+// import { renderFeed } from './homePageFeed';
 
 /* global userData */
 
@@ -78,8 +78,10 @@ let waitingForDataLoad = setTimeout(function dataLoadedCheck() {
   if (userStatus === 'logged-in' && user !== null) {
     clearTimeout(waitingForDataLoad);
 
+
     import('./homePageFeed').then(({ renderFeed }) => {
       // We have user data, render followed tags.
+      // 
       renderFeed(feedTimeFrame);
 
       InstantClick.on('change', () => {

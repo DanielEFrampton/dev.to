@@ -26,6 +26,7 @@ export const Article = ({
   bookmarkClick,
 }) => {
   if (article && article.type_of === 'podcast_episodes') {
+    // render podcast component if article type is podcast
     return <PodcastArticle article={article} />;
   }
 
@@ -99,7 +100,7 @@ export const Article = ({
           ) : null}
         </a>
       </h4>
-
+      {/* lines 103-124 are the UI elements rendered on the bottom of each article card in the main feed */}
       <TagList tags={article.tag_list} />
       {article.class_name !== 'User' && (
         <CommentsCount
@@ -123,6 +124,7 @@ export const Article = ({
         onClick={bookmarkClick}
       />
     </div>
+  // could add our add-to-curated-list button in here for our user interaction from the main feed
   );
 };
 

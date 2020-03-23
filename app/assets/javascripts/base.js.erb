@@ -7,6 +7,8 @@
 //= require serviceworker-companion
 //= require algolia/v3/algoliasearch.min
 
+
+# initialize instantClick
 var instantClick
   , InstantClick = instantClick = function(document, location, $userAgent) {
   // Internal variables
@@ -42,6 +44,7 @@ var instantClick
   ////////// HELPERS //////////
 
 
+  # remove hash from url
   function removeHash(url) {
     var index = url.indexOf('#')
     if (index < 0) {
@@ -73,6 +76,8 @@ var instantClick
     return false
   }
 
+
+  # check if something can be preloaded with instant click 
   function isPreloadable(a) {
     var domain = location.protocol + '//' + location.host
 
@@ -112,6 +117,8 @@ var instantClick
     return returnValue
   }
 
+
+  # handle page navigation
   function changePage(title, body, newUrl, scrollY, pop) {
     var pageContentDiv = document.getElementById("page-content");
     if (document.getElementById("navigation-butt")) {
@@ -208,7 +215,7 @@ var instantClick
     }
 
     var a = getLinkTarget(e.target)
-
+    # if moused over and is preloadable, preload it
     if (!a || !isPreloadable(a)) {
       return
     }

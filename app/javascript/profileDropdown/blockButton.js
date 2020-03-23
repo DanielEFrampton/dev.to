@@ -9,7 +9,7 @@ export default function initBlock() {
     return;
   }
   const { profileUserId } = blockButton.dataset;
-
+  
   function unblock() {
     fetch(`/user_blocks/${profileUserId}`, {
       method: 'DELETE',

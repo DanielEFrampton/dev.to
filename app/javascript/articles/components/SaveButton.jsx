@@ -5,6 +5,7 @@ import { articlePropTypes } from '../../src/components/common-prop-types';
 export class SaveButton extends Component {
   componentDidMount() {
     const { isBookmarked } = this.props;
+    // isBookmarked property used to conditionally render save button and other UI indicators
     this.setState({ buttonText: isBookmarked ? 'SAVED' : 'SAVE' });
   }
 

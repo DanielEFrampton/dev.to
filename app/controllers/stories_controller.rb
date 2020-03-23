@@ -16,6 +16,9 @@ class StoriesController < ApplicationController
 
   rescue_from ArgumentError, with: :bad_request
 
+  
+  # calls lots of helpers here, working on tracing this down 
+
   def index
     @page = (params[:page] || 1).to_i
     @article_index = true
@@ -143,6 +146,7 @@ class StoriesController < ApplicationController
     render template: "pages/show"
   end
 
+  # this function renders the articles/index view located at app/views/articles/index.html.erb
   def handle_base_index
     @home_page = true
     assign_feed_stories
@@ -156,6 +160,7 @@ class StoriesController < ApplicationController
     set_surrogate_key_header "main_app_home_page"
     response.headers["Surrogate-Control"] = "max-age=600, stale-while-revalidate=30, stale-if-error=86400"
 
+    # render articles/index view 
     render template: "articles/index"
   end
 

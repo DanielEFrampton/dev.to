@@ -412,6 +412,7 @@ Rails.application.routes.draw do
   get "/:username/:slug" => "stories#show"
   get "/:username" => "stories#index"
 
+  # default root url to app/controllers/stories_controller.rb
   root "stories#index"
 end
 

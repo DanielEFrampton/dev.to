@@ -27,6 +27,7 @@ const ICONS = {
 };
 
 const commonProps = {
+  // this action is invoked when SaveButton is clicked on any article 
   bookmarkClick: action('Saved/unsaved article'),
 };
 

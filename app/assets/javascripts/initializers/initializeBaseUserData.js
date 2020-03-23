@@ -2,6 +2,9 @@
 
 /* global userData, filterXSS */
 
+
+// this file preps data for the home page (user profile picture, username, etc)
+
 function initializeUserProfileContent(user) {
   document.getElementById('sidebar-profile--avatar').src = user.profile_image_90;
   document.getElementById('sidebar-profile--avatar').alt = user.username;
@@ -40,16 +43,20 @@ function initializeUserSidebar(user) {
 function addRelevantButtonsToArticle(user) {
   var articleContainer = document.getElementById('article-show-container');
   if (articleContainer) {
+    // add author id if it exists 
     if (parseInt(articleContainer.dataset.authorId, 10) === user.id) {
       let actions = [
         `<a href="${articleContainer.dataset.path}/edit" rel="nofollow">EDIT</a>`,
       ];
+
+      // add published date 
       if (JSON.parse(articleContainer.dataset.published) === true) {
         actions.push(
           `<a href="${articleContainer.dataset.path}/manage" rel="nofollow">MANAGE</a>`,
         );
       }
       if (user.pro) {
+        // check if user has pro account?
         actions.push(
           `<a href="${articleContainer.dataset.path}/stats" rel="nofollow">STATS</a>`,
         );
@@ -69,6 +76,7 @@ function addRelevantButtonsToComments(user) {
     // buttons are actually <span>'s
     var settingsButts = document.getElementsByClassName('comment-actions');
 
+    // show or hide buttons based on user data and comment data 
     for (let i = 0; i < settingsButts.length; i += 1) {
       let butt = settingsButts[i];
       const { action, commentableUserId, userId } = butt.dataset;
@@ -101,6 +109,7 @@ function addRelevantButtonsToComments(user) {
 }
 
 function initializeBaseUserData() {
+  // add user data 
   const user = userData();
   const userProfileLinkHTML =
     '<a href="/' +

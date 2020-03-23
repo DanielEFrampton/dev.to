@@ -1,4 +1,4 @@
-// Item list item
+// Item list item represents each article card on the reading list dash
 import { h } from 'preact';
 import { PropTypes } from 'preact-compat';
 

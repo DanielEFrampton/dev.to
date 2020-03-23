@@ -11,6 +11,7 @@ import {
   toggleTag,
   clearSelectedTags,
 } from '../searchableItemList/searchableItemList';
+// ItemListItem is the component that represents each article code while on the readingList dashboard
 import { ItemListItem } from '../src/components/ItemList/ItemListItem';
 import { ItemListItemArchiveButton } from '../src/components/ItemList/ItemListItemArchiveButton';
 import { ItemListLoadMoreButton } from '../src/components/ItemList/ItemListLoadMoreButton';
@@ -22,6 +23,7 @@ const READING_LIST_ARCHIVE_PATH = '/readinglist/archive';
 const READING_LIST_PATH = '/readinglist';
 
 const FilterText = ({ selectedTags, query, value }) => {
+  // show tags or `nothing with this filter` if no tags exist
   return (
     <h1>
       {selectedTags.length === 0 && query.length === 0
@@ -50,6 +52,7 @@ export class ReadingList extends Component {
   }
 
   componentDidMount() {
+    // add hitsPerPage and statusView to component state upon mounting
     const { hitsPerPage, statusView } = this.state;
 
     this.performInitialSearch({
@@ -65,6 +68,7 @@ export class ReadingList extends Component {
   toggleStatusView = event => {
     event.preventDefault();
 
+    // add search query and tags to component state 
     const { query, selectedTags } = this.state;
 
     const isStatusViewValid = this.statusViewValid();
@@ -173,7 +177,9 @@ export class ReadingList extends Component {
 
     const isStatusViewValid = this.statusViewValid();
 
+    
     const archiveButtonLabel = isStatusViewValid ? 'archive' : 'unarchive';
+    // map through favorited articles living in this.state, create array of ItemListItems components to be rendered
     const itemsToRender = items.map(item => {
       return (
         <ItemListItem item={item}>
@@ -242,6 +248,7 @@ export class ReadingList extends Component {
               {` (${totalCount > 0 ? totalCount : 'empty'})`}
             </div>
             <div>
+                  {/* itemsToRender represent each article card, here is where they are being actually rendered */}
               {items.length > 0 ? itemsToRender : this.renderEmptyItems()}
             </div>
           </div>

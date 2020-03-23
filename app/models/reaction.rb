@@ -30,6 +30,7 @@ class Reaction < ApplicationRecord
   before_destroy :bust_reactable_cache_without_delay
   before_destroy :remove_algolia
 
+  # Algolia search configuration
   algoliasearch index_name: "SecuredReactions_#{Rails.env}", auto_index: false, auto_remove: false do
     attribute :id, :reactable_user, :searchable_reactable_title, :searchable_reactable_path, :status, :reading_time,
               :searchable_reactable_text, :searchable_reactable_tags, :viewable_by, :reactable_tags, :reactable_published_date
@@ -145,6 +146,7 @@ class Reaction < ApplicationRecord
     reactable.decorate.cached_tag_list_array if category == "readinglist"
   end
 
+  # Used in reading_list_items_controller to generate Algolia search filter
   def viewable_by
     user_id
   end

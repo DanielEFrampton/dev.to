@@ -49,6 +49,8 @@ class AsyncInfoController < ApplicationController
         followed_user_ids: @user.cached_following_users_ids,
         followed_organization_ids: @user.cached_following_organizations_ids,
         followed_podcast_ids: @user.cached_following_podcasts_ids,
+        # Utilizes ReadingList PORO/labor class to retrieve ids of users's
+        # saved articles
         reading_list_ids: ReadingList.new(@user).cached_ids_of_articles,
         blocked_user_ids: @user.all_blocking.pluck(:blocked_id),
         saw_onboarding: @user.saw_onboarding,

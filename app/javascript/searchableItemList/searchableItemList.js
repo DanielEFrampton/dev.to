@@ -67,9 +67,16 @@ export function performInitialSearch({
   const component = this;
   const { hitsPerPage } = component.state;
 
+  // Declares variable with value of setupAlgoliaIndex utility function,
+  // imported from ../src/utils/algolia, which pushes index info to Algolia.
+  // When coming from readingList, containerId is 'reading-list' and indexName
+  // is 'SecuredReactions', which is the index name defined for Algolia on
+  // the Reaction model.
   const index = setupAlgoliaIndex({ containerId, indexName });
 
+  // Queries the Algolia index created above.
   index.search('', searchOptions).then(result => {
+    // Updates the component state with results of Algolia query.
     component.setState({
       items: result.hits,
       totalCount: result.nbHits,
@@ -90,8 +97,10 @@ export function search(query, { page, tags, statusView }) {
   // we check `undefined` because page can be 0
   const newPage = page === undefined ? component.state.page : page;
 
+  // Retrieves the index, hits, and items created by performInitialSearch
   const { index, hitsPerPage, items } = component.state;
 
+  // Filters results by any selected tags
   const filters = { hitsPerPage, page: newPage };
   if (tags && tags.length > 0) {
     filters.tagFilters = tags;
@@ -100,6 +109,7 @@ export function search(query, { page, tags, statusView }) {
   if (statusView) {
     filters.filters = `status:${statusView}`;
   }
+  // Performs new Algolia search using previously created index object
   index.search(query, filters).then(result => {
     // append new items at the end
     const allItems =

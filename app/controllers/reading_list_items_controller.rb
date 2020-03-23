@@ -1,8 +1,14 @@
 class ReadingListItemsController < ApplicationController
   def index
+    # Declares instance variable with boolean value
     @reading_list_items_index = true
+    # Sets value of @view instance variable to either "valid" or "archive"
+    # depending on which path was visited.
     set_view
+    # Generates Algolia search key from environmental variables and the user's
+    # ID retrieved from their session.
     generate_algolia_search_key
+    # Index action implicitly renders `app/views/reading_list/index.html.erb`
   end
 
   def update

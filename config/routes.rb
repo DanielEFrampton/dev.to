@@ -202,6 +202,8 @@ Rails.application.routes.draw do
     get "purchase", on: :collection, to: "credits#new"
   end
   resources :buffer_updates, only: [:create]
+  # Path the readingList component uses to change an article on a user's reading
+  # list to "archived"
   resources :reading_list_items, only: [:update]
   resources :poll_votes, only: %i[show create]
   resources :poll_skips, only: [:create]
@@ -362,6 +364,9 @@ Rails.application.routes.draw do
 
   get "/pod", to: "podcast_episodes#index"
   get "/podcasts", to: redirect("pod")
+
+  # Paths to view the regular Reading List page and the archived version,
+  # which both route to the Index action on the ReadingListItems controller.
   get "/readinglist" => "reading_list_items#index"
   get "/readinglist/:view" => "reading_list_items#index", :constraints => { view: /archive/ }
 

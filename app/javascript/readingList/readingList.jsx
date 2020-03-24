@@ -42,6 +42,7 @@ export class ReadingList extends Component {
     this.onSearchBoxType = debounce(onSearchBoxType.bind(this), 300, {
       leading: true,
     });
+    // bind these functions to the context of this component
     this.loadNextPage = loadNextPage.bind(this);
     this.performInitialSearch = performInitialSearch.bind(this);
     this.search = search.bind(this);
@@ -232,6 +233,16 @@ export class ReadingList extends Component {
                 {isStatusViewValid ? 'View Archive' : 'View Reading List'}
               </a>
             </div>
+          </div>
+          <div className='curated-lists'>
+            <h2>Curated Lists</h2>
+            {/* on click, display addCuratedList form */}
+            <button>+</button>
+            <ul>
+              {/* // make these clickable and links to a curatedList component view */}
+              <p></p><li>Best of 2019</li>
+              <p></p><li>Cool Stuff</li>
+            </ul>
           </div>
         </div>
 

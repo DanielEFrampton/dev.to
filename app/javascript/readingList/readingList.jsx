@@ -1,6 +1,7 @@
 import { h, Component } from 'preact';
 import { PropTypes } from 'preact-compat';
 import debounce from 'lodash.debounce';
+import { NewListForm } from './NewListForm'
 
 import {
   defaultState,
@@ -243,6 +244,7 @@ export class ReadingList extends Component {
               <p></p><li>Best of 2019</li>
               <p></p><li>Cool Stuff</li>
             </ul>
+            <NewListForm />
           </div>
         </div>
 

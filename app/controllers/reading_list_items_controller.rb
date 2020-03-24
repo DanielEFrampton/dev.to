@@ -3,6 +3,7 @@ class ReadingListItemsController < ApplicationController
     @reading_list_items_index = true
     set_view
     generate_algolia_search_key
+    @curated_lists = serialized_curated_lists
   end
 
   def update
@@ -15,6 +16,11 @@ class ReadingListItemsController < ApplicationController
   end
 
   private
+
+  def serialized_curated_lists
+    user_lists = CuratedList.where(user_id: session_current_user_id)
+    CuratedListSerializer.new(user_lists).to_json
+  end
 
   def generate_algolia_search_key
     params = { filters: "viewable_by:#{session_current_user_id}" }

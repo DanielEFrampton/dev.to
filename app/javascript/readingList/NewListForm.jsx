@@ -10,9 +10,9 @@ export class NewListForm extends Component {
       description: ''
     }
   }
-  // handleChange = e => {
-  //   this.setState({ [e.target.name]: e.target.value})
-  // }
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value})
+  }
   handleClick = e => {
     e.preventDefault();
     console.log(this.state)

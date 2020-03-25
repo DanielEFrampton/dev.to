@@ -240,7 +240,7 @@ export class ReadingList extends Component {
             {/* on click, display addCuratedList form */}
             <button>+</button>
             <ul>
-              {/* // make these clickable and links to a curatedList component view */}
+              {/* render each curated list as a button linking to the curatedList component view, will implement once curatedList data is linked and passed */}
               <p></p><li>Best of 2019</li>
               <p></p><li>Cool Stuff</li>
             </ul>

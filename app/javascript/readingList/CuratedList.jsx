@@ -16,7 +16,6 @@ import { ItemListItemArchiveButton } from '../src/components/ItemList/ItemListIt
 import { ItemListLoadMoreButton } from '../src/components/ItemList/ItemListLoadMoreButton';
 import { ItemListTags } from '../src/components/ItemList/ItemListTags';
 
-
 const STATUS_VIEW_VALID = 'valid';
 const STATUS_VIEW_ARCHIVED = 'archived';
 const READING_LIST_ARCHIVE_PATH = '/readinglist/archive';

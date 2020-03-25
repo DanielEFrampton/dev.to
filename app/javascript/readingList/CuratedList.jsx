@@ -18,6 +18,7 @@ import { ItemListTags } from '../src/components/ItemList/ItemListTags';
 
 const STATUS_VIEW_VALID = 'valid';
 const STATUS_VIEW_ARCHIVED = 'archived';
+// change these to curated list path once route is in place?
 const READING_LIST_ARCHIVE_PATH = '/readinglist/archive';
 const READING_LIST_PATH = '/readinglist';
 

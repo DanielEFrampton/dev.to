@@ -68,6 +68,7 @@ export class CuratedList extends Component {
     const isStatusViewValid = this.statusViewValid();
 
     const archiveButtonLabel = isStatusViewValid ? 'archive' : 'unarchive';
+    // itemsToRender will map over each article in a specific curated list, assign the resulting ItemListItem to an array
     const itemsToRender = items.map(item => {
       return (
         <ItemListItem item={item}>
@@ -87,6 +88,7 @@ export class CuratedList extends Component {
       ''
     );
     return (
+      // when rendered, find articles within state or wherever they are stored, render each one of those as a ItemListItem
       <div className="home item-list">
         <div className="side-bar">
           <div className="widget filters">

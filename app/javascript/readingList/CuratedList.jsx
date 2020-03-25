@@ -25,6 +25,7 @@ const READING_LIST_PATH = '/readinglist';
 export class CuratedList extends Component {
   constructor(props) {
     super(props);
+    this.state = {name: '', description: '', articles: []}
 
     // const { availableTags, statusView } = this.props;
     // this.state = defaultState({ availableTags, archiving: false, statusView });
@@ -54,15 +55,15 @@ export class CuratedList extends Component {
     // });
   }
   render() {
-    const {
-      items,
-      itemsLoaded,
-      totalCount,
-      availableTags,
-      selectedTags,
-      showLoadMoreButton,
-      archiving,
-    } = this.state;
+    // const {
+    //   items,
+    //   itemsLoaded,
+    //   totalCount,
+    //   availableTags,
+    //   selectedTags,
+    //   showLoadMoreButton,
+    //   archiving,
+    // } = this.state;
 
     const isStatusViewValid = this.statusViewValid();
 

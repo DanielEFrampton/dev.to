@@ -1,5 +1,5 @@
 class CuratedList < ApplicationRecord
-  validates :name, :description, presence: true
+  validates :name, :description, :slug, presence: true
 
   belongs_to :user
   has_many :curated_list_articles

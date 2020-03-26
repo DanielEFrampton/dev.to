@@ -36,8 +36,8 @@ export class ReadingList extends Component {
   constructor(props) {
     super(props);
 
-    const { availableTags, statusView } = this.props;
-    this.state = defaultState({ availableTags, archiving: false, statusView });
+    const { availableTags, statusView, curatedLists, username } = this.props;
+    this.state = defaultState({ availableTags, archiving: false, statusView, curatedLists, username });
 
     // bind and initialize all shared functions
     this.onSearchBoxType = debounce(onSearchBoxType.bind(this), 300, {
@@ -171,6 +171,8 @@ export class ReadingList extends Component {
       selectedTags,
       showLoadMoreButton,
       archiving,
+      curatedLists,
+      username
     } = this.state;
 
     const isStatusViewValid = this.statusViewValid();
@@ -194,6 +196,15 @@ export class ReadingList extends Component {
     ) : (
       ''
     );
+
+    const listElements = curatedLists.map(
+      list => {
+        return (
+          <a href={`/${username}/curated_lists/${list.slug}`}>{list.name}</a>
+        )
+      }
+    );
+
     return (
       <div className="home item-list">
         <div className="side-bar">
@@ -240,11 +251,11 @@ export class ReadingList extends Component {
             {/* on click, display addCuratedList form */}
             <button>+</button>
             <ul>
-              {/* render each curated list as a button linking to the curatedList component view, will implement once curatedList data is linked and passed */}
-              <p></p><li>Best of 2019</li>
-              <p></p><li>Cool Stuff</li>
+              { listElements }
             </ul>
-            <NewListForm />
+            <NewListForm
+              username={username}
+            />
           </div>
         </div>
 

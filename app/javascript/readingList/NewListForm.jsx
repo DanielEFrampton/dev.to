@@ -15,19 +15,28 @@ export class NewListForm extends Component {
   }
   handleClick = e => {
     e.preventDefault();
-    console.log(this.state)
+    window.fetch(`/${this.props.username}/curated_lists`, {
+      method: 'POST',
+      headers: {
+        'X-CSRF-Token': window.csrfToken,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name: this.state.name,
+                             description: this.state.description }),
+      credentials: 'same-origin',
+    });
   }
   render() {
     const { title, description } = this.state
     return (
-      <form className='new-list-form'>
+      <form className='new-list-form' onSubmit={() => handleClick()}>
         <input
           className='new-list-form__title'
           type="text"
           placeholder="Title"
           name="title"
           value={title}
-          onChange={this.handleChange}
+          onChange={(e) => this.handleChange(e)}
         />
         <input
           className='new-list-form__description'
@@ -35,10 +44,15 @@ export class NewListForm extends Component {
           placeholder="Description"
           name="description"
           value={description}
-          onChange={this.handleChange}
+          onChange={(e) => this.handleChange(e)}
         />
-        <button className='new-list-form__button'>Create Curated List</button>
-        {/* onClick={() => this.handleClick()} */}
+        <button className='new-list-form__button'
+                // type='submit'
+                // onClick={() => this.handleClick()}
+                >
+          Create Curated List
+        </button>
+
     </form>)
   }
 }

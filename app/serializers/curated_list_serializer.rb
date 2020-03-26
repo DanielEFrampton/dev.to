@@ -8,12 +8,13 @@ class CuratedListSerializer
       {
         "name" => curated_list.name,
         "description" => curated_list.description,
-        "articles" => curated_list.articles.map do |article|
-          {
-            "title" => article.title,
-            "slug" => article.slug
-          }
-        end
+        "slug" => curated_list.slug
+        # "articles" => curated_list.articles.map do |article|
+        #   {
+        #     "title" => article.title,
+        #     "slug" => article.slug
+        #   }
+        # end
       }
     end)
   end

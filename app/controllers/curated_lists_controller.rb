@@ -7,6 +7,9 @@ class CuratedListsController < ApplicationController
   def create
     user = User.find(session_current_user_id)
     new_list = user.curated_lists.new(strong_params)
+    if new_list.save
+      flash[:success] = 'Hooray!'
+    end
   end
 
   private

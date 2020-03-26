@@ -400,8 +400,7 @@ Rails.application.routes.draw do
   get "/:username/comment/:id_code/mod" => "moderations#comment"
   get "/:username/comment/:id_code/settings", to: "comments#settings"
 
-  get "/:username/curated_lists/:curated_list_name", to: "curated_lists#show"
-  get "/:username/curated_lists/new", to: "curated_list#new"
+  get "/:username/curated_lists/:slug", to: "curated_lists#show"
   post "/:username/curated_lists", to: "curated_lists#create"
 
   get "/:username/:slug/:view" => "stories#show",

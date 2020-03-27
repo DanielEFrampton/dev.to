@@ -2,10 +2,11 @@ import { h, render } from 'preact';
 import { getUserDataAndCsrfToken } from '../chat/util';
 import { ReadingList } from '../readingList/readingList';
 
-function loadElement() {
+export function loadElement() {
+  const {curatedLists} = document.getElementById('curated-list').dataset;
+
   getUserDataAndCsrfToken().then(({ currentUser }) => {
     const root = document.getElementById('reading-list');
-    const {curatedLists} = document.getElementById('curated-list').dataset;
     if (root) {
       render(
         <ReadingList

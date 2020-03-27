@@ -23,6 +23,8 @@
   <meta name="twitter:card" content="summary_large_image">
   <%= auto_discovery_link_tag(:rss, "https://dev.to/feed", title: "#{ApplicationConfig['COMMUNITY_NAME']} RSS Feed") %>
 <% end %>
+<div class="curated-list-container" id="curated-list" data-curated-lists="<%= @curated_lists %>">
+</div>
 <%= javascript_pack_tag "homePage", defer: true %>
 
 <% cache(cache_key_heroku_slug("main-stories-index-#{params}-#{user_signed_in?}"), expires_in: 90.seconds) do %>
@@ -33,6 +35,7 @@
       data-articles-since="<%= Timeframer.new(params[:timeframe]).datetime.to_i %>">
 
     <%= render "articles/sidebar" %>
+
 
     <%# BEGIN Feed menu bar %>
     <div class="articles-list" id="articles-list">

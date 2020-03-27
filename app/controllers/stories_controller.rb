@@ -144,6 +144,7 @@ class StoriesController < ApplicationController
   end
 
   def handle_base_index
+    retrieve_curated_list_info if user_signed_in?
     @home_page = true
     assign_feed_stories
     assign_hero_html
@@ -221,6 +222,11 @@ class StoriesController < ApplicationController
     return if performed?
 
     render template: "articles/show"
+  end
+
+  def retrieve_curated_list_info
+    CuratedList.where(user_id: session_current_user_id)
+    @curated_lists = CuratedListSerializer.new(user_lists).to_json
   end
 
   def assign_feed_stories

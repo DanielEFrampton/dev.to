@@ -35,7 +35,6 @@ const FilterText = ({ selectedTags, query, value }) => {
 export class ReadingList extends Component {
   constructor(props) {
     super(props);
-
     const { availableTags, statusView, curatedLists, username } = this.props;
     this.state = defaultState({ availableTags, archiving: false, statusView, curatedLists, username });
 
@@ -43,7 +42,7 @@ export class ReadingList extends Component {
     this.onSearchBoxType = debounce(onSearchBoxType.bind(this), 300, {
       leading: true,
     });
-    // bind these functions to the context of this component
+    // bind these  functions to the context of this component
     this.loadNextPage = loadNextPage.bind(this);
     this.performInitialSearch = performInitialSearch.bind(this);
     this.search = search.bind(this);
@@ -249,12 +248,13 @@ export class ReadingList extends Component {
           <div className='curated-lists'>
             <h2>Curated Lists</h2>
             {/* on click, display addCuratedList form */}
-            <button>+</button>
+            {/* <button>+</button> */}
             <ul>
               { listElements }
             </ul>
             <NewListForm
               username={username}
+              updateCuratedLists={this.updateCuratedLists}
             />
           </div>
         </div>

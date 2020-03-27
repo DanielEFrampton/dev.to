@@ -13,7 +13,7 @@ export class NewListForm extends Component {
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value})
   }
-  handleClick = e => {
+  handleSubmit = e => {
     e.preventDefault();
     window.fetch(`/${this.props.username}/curated_lists`, {
       method: 'POST',
@@ -22,20 +22,26 @@ export class NewListForm extends Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ name: this.state.name,
-                             description: this.state.description }),
+                             description: this.state.description,
+                             slug: this.sluggify(this.state.name)}),
       credentials: 'same-origin',
     });
   }
+
+  sluggify = name => {
+    return name.replace(/ +/g, '-').toLowerCase();
+  };
+
   render() {
-    const { title, description } = this.state
+    const { name, description } = this.state
     return (
-      <form className='new-list-form' onSubmit={this.handleClick}>
+      <form className='new-list-form' onSubmit={this.handleSubmit}>
         <input
-          className='new-list-form__title'
+          className='new-list-form__name'
           type="text"
-          placeholder="Title"
-          name="title"
-          value={title}
+          placeholder="Name"
+          name="name"
+          value={name}
           onChange={(e) => this.handleChange(e)}
         />
         <input
@@ -46,10 +52,7 @@ export class NewListForm extends Component {
           value={description}
           onChange={(e) => this.handleChange(e)}
         />
-        <button className='new-list-form__button'
-                // type='submit'
-                // onClick={() => this.handleClick()}
-                >
+        <button className='new-list-form__button'>
           Create Curated List
         </button>
 

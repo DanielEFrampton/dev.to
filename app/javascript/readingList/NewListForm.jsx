@@ -26,6 +26,10 @@ export class NewListForm extends Component {
                              slug: this.sluggify(this.state.name)}),
       credentials: 'same-origin',
     });
+    this.setState({
+      name: '',
+      description: ''
+    })
   }
 
   sluggify = name => {

@@ -4,9 +4,8 @@ import { ReadingList } from '../readingList/readingList';
 
 function loadElement() {
   getUserDataAndCsrfToken().then(({ currentUser }) => {
-    console.log(currentUser);
     const root = document.getElementById('reading-list');
-    const curatedLists = document.getElementById('curated-list').dataset.curatedLists;
+    const {curatedLists} = document.getElementById('curated-list').dataset;
     if (root) {
       render(
         <ReadingList

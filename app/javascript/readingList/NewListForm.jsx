@@ -29,7 +29,7 @@ export class NewListForm extends Component {
   render() {
     const { title, description } = this.state
     return (
-      <form className='new-list-form' onSubmit={() => handleClick()}>
+      <form className='new-list-form' onSubmit={this.handleClick}>
         <input
           className='new-list-form__title'
           type="text"

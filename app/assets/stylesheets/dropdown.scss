@@ -1,0 +1,21 @@
+@import 'variables';
+@import '_mixins';
+
+.article_list-dropdown {
+  background-color: $bold-blue;
+  color: #fff;
+  cursor: pointer;
+  font-family: $helvetica;
+  font-weight: 900;
+  height: 2.5em;
+  margin: 1em;
+  margin-left: 35em;
+  width: 10em;
+  &:hover {
+    @include themeable(
+      background,
+      theme-container-background-hover,
+      lighten($bold-blue, 38%)
+    );
+  }
+}

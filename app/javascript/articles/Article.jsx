@@ -13,9 +13,10 @@ import {
   ReactionsCount,
 } from './components';
 import { PodcastArticle } from './PodcastArticle';
+import { Dropdown } from './components/Dropdown';
 
 /* global timeAgo */
-
+// isBookmarked boolean required for saving functionality, defaults to false
 export const Article = ({
   article,
   currentTag,
@@ -25,10 +26,11 @@ export const Article = ({
   videoIcon,
   bookmarkClick,
 }) => {
+  // Checks if the article is a podcast and returns PodcastArticle if true
   if (article && article.type_of === 'podcast_episodes') {
     return <PodcastArticle article={article} />;
   }
-
+  // Renders the article if its not a podcast
   return (
     <div
       className="single-article single-article-small-pic"
@@ -117,11 +119,14 @@ export const Article = ({
           readingTime={article.reading_time}
         />
       )}
-      <SaveButton
-        article={article}
-        isBookmarked={isBookmarked}
-        onClick={bookmarkClick}
-      />
+      <div className="article_button-container">
+        <SaveButton
+          article={article}
+          isBookmarked={isBookmarked}
+          onClick={bookmarkClick}
+        />
+        <Dropdown article={article} />
+      </div>
     </div>
   );
 };

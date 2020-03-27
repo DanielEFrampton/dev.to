@@ -8,6 +8,7 @@ import {
   CommentsCount,
 } from './components';
 import { articlePropTypes } from '../src/components/common-prop-types';
+import { Dropdown } from './components/Dropdown';
 
 export const FeaturedArticle = ({
   article,
@@ -90,11 +91,14 @@ export const FeaturedArticle = ({
           articlePath={article.path}
           readingTime={article.reading_time}
         />
-        <SaveButton
-          article={article}
-          isBookmarked={isBookmarked}
-          onClick={bookmarkClick}
-        />
+        <div>
+          <SaveButton
+            article={article}
+            isBookmarked={isBookmarked}
+            onClick={bookmarkClick}
+          />
+          <Dropdown />
+        </div>
       </div>
     </div>
   );

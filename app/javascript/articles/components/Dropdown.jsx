@@ -18,7 +18,14 @@ export const Dropdown = ({ article }) => {
     </option>
   ));
 
-  return <select className="article_list-dropdown">{dropdownOptions}</select>;
+  return (
+    <select className="article_list-dropdown">
+      <option disabled selected value="">
+        ADD TO LIST
+      </option>
+      {dropdownOptions}
+    </select>
+  );
 };
 
 Dropdown.propTypes = {

@@ -15,7 +15,7 @@
     @include themeable(
       background,
       theme-container-background-hover,
-      lighten($bold-blue, 38%)
+      darken($bold-blue, 18%)
     );
   }
 }

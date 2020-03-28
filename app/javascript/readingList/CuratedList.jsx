@@ -12,7 +12,16 @@ export class CuratedList extends Component {
   }
 
   render() {
-    // let curatedCards = 
+    let curatedCards = this.props.curatedListData.articles.map(article => {
+      article = JSON.parse(article)
+      console.log('article:', article)
+      return (
+        <a className="item" href={article.path}>
+          <h1 className="item-title">{article.title}</h1>
+          <p className='item-description'>{article.description}</p>
+        </a>
+      )
+    })
     return ( 
     <div className={`${this.props.curatedListData.name}-curated-list`}>
       <h1>
@@ -20,7 +29,7 @@ export class CuratedList extends Component {
       </h1>
       <section className='curated-cards'>
         <div className='curated-card'>
-
+          {curatedCards}
         </div>
       </section>
     </div>

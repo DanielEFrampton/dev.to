@@ -108,6 +108,7 @@
         <% end %>
       </section>
       <header class="title" id="main-title">
+      <%= javascript_pack_tag "Dropdown", defer: true %>
         <% if @organization %>
           <a href="<%= @organization.path %>" class="org-branded-title-link">
             <div class="org-branded-title">

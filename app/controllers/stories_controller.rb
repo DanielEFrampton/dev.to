@@ -216,6 +216,7 @@ class StoriesController < ApplicationController
   end
 
   def handle_article_show
+    retrieve_curated_list_info if user_signed_in?
     assign_article_show_variables
     set_surrogate_key_header @article.record_key
     redirect_if_show_view_param

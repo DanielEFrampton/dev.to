@@ -211,7 +211,7 @@ export class ReadingList extends Component {
     const listElements = curatedLists.map(
       list => {
         return (
-          <a href={`/${username}/curated_lists/${list.slug}`}>{list.name}</a>
+          <li className='curated-titles'><a href={`/${username}/curated_lists/${list.slug}`}>{list.name}</a></li>
         )
       }
     );

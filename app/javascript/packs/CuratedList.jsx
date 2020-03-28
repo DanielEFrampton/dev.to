@@ -3,15 +3,15 @@ import { getUserDataAndCsrfToken } from '../chat/util';
 import { CuratedList } from '../readingList/CuratedList';
 
 function loadElement() {
-  console.log('curated list pack')
   getUserDataAndCsrfToken().then(({ currentUser }) => {
-    const root = document.getElementById('reading-list');
+    const root = document.getElementById('curated-list');
+    const curatedListData = JSON.parse(root.dataset.curatedLists);
+    console.log('line 9:', curatedListData[0])
     if (root) {
-      console.log('rendering CuratedList')
+      console.log('rendering CuratedList:', JSON.parse(root.dataset.curatedLists))
       render(
         <CuratedList
-          availableTags={currentUser.followed_tag_names}
-          statusView={root.dataset.view}
+          curatedListData={curatedListData[0]}
         />,
         root,
         root.firstElementChild,

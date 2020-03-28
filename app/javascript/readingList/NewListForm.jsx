@@ -18,22 +18,24 @@ export class NewListForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    window.fetch(`/${this.props.username}/curated_lists`, {
-      method: 'POST',
-      headers: {
-        'X-CSRF-Token': window.csrfToken,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ name: this.state.name,
-                             description: this.state.description,
-                             slug: this.sluggify(this.state.name)}),
-      credentials: 'same-origin',
-    });
-    this.setState({
-      name: '',
-      description: ''
-    })
-    window.location.reload()
+    if (this.state.name !== '') {
+      window.fetch(`/${this.props.username}/curated_lists`, {
+        method: 'POST',
+        headers: {
+          'X-CSRF-Token': window.csrfToken,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name: this.state.name,
+                              description: this.state.description,
+                              slug: this.sluggify(this.state.name)}),
+        credentials: 'same-origin',
+      });
+      this.setState({
+        name: '',
+        description: ''
+      })
+      window.location.reload()
+    } 
   }
 
   sluggify = name => {
@@ -44,7 +46,7 @@ export class NewListForm extends Component {
     const { name, description } = this.state
     return (
 
-      <form className='new-list-form' onSubmit={this.handleSubmit}>
+      <form className='new-list-form' onSubmit={this.handleSubmit} autocomplete='off'>
         <input
           className='new-list-form__name'
           type="text"

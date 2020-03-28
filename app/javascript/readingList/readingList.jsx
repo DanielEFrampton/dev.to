@@ -36,7 +36,7 @@ export class ReadingList extends Component {
   constructor(props) {
     super(props);
     const { availableTags, statusView, curatedLists, username } = this.props;
-    this.state = defaultState({ availableTags, archiving: false, statusView, curatedLists, username });
+    this.state = defaultState({ availableTags, archiving: false, statusView, curatedLists, username, isHidden: true });
 
     // bind and initialize all shared functions
     this.onSearchBoxType = debounce(onSearchBoxType.bind(this), 300, {
@@ -160,6 +160,18 @@ export class ReadingList extends Component {
       </div>
     );
   }
+  toggleVisibility() {
+  //  if (this.state.isHidden === true) {
+  //    this.state.isHidden = false;
+  //  } else {
+  //    this.state.isHidden = true;
+  //  }
+  //  console.log(this.state.isHidden);
+  this.setState({
+    isHidden: !this.state.isHidden
+  })
+   
+  }
 
   render() {
     const {
@@ -199,7 +211,7 @@ export class ReadingList extends Component {
     const listElements = curatedLists.map(
       list => {
         return (
-          <a href={`/${username}/curated_lists/${list.slug}`}>{list.name}</a>
+          <li className='curated-titles'><a href={`/${username}/curated_lists/${list.slug}`}>{`${list.name} (${list.articles.length})`}</a></li>
         )
       }
     );
@@ -247,15 +259,17 @@ export class ReadingList extends Component {
           </div>
           <div className='curated-lists'>
             <h2>Curated Lists</h2>
-            {/* on click, display addCuratedList form */}
-            {/* <button>+</button> */}
-            <ul>
+            <ul className='curated-list-names'>
               { listElements }
             </ul>
+            <button className={`show-form-btn_${this.state.isHidden}`} onClick={() => this.toggleVisibility()}>{this.state.isHidden ? 'Add New List' : 'Hide'}</button>
+            { !this.state.isHidden && 
             <NewListForm
+              visibility={this.toggleVisibility}
               username={username}
               updateCuratedLists={this.updateCuratedLists}
-            />
+            /> 
+            }
           </div>
         </div>
 

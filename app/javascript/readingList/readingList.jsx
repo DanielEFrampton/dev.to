@@ -36,7 +36,7 @@ export class ReadingList extends Component {
   constructor(props) {
     super(props);
     const { availableTags, statusView, curatedLists, username } = this.props;
-    this.state = defaultState({ availableTags, archiving: false, statusView, curatedLists, username });
+    this.state = defaultState({ availableTags, archiving: false, statusView, curatedLists, username, isHidden: true });
 
     // bind and initialize all shared functions
     this.onSearchBoxType = debounce(onSearchBoxType.bind(this), 300, {
@@ -160,6 +160,18 @@ export class ReadingList extends Component {
       </div>
     );
   }
+  toggleVisibility() {
+  //  if (this.state.isHidden === true) {
+  //    this.state.isHidden = false;
+  //  } else {
+  //    this.state.isHidden = true;
+  //  }
+  //  console.log(this.state.isHidden);
+  this.setState({
+    isHidden: !this.state.isHidden
+  })
+   
+  }
 
   render() {
     const {
@@ -248,14 +260,17 @@ export class ReadingList extends Component {
           <div className='curated-lists'>
             <h2>Curated Lists</h2>
             {/* on click, display addCuratedList form */}
-            {/* <button>+</button> */}
-            <ul>
+            <button onClick={() => this.toggleVisibility()}>Add New List</button>
+            <ul className='curated-list-names'>
               { listElements }
             </ul>
+            { !this.state.isHidden && 
             <NewListForm
+              visibility={this.toggleVisibility}
               username={username}
               updateCuratedLists={this.updateCuratedLists}
-            />
+            /> 
+            }
           </div>
         </div>
 

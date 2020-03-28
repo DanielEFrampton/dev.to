@@ -3,13 +3,15 @@ import { getUserDataAndCsrfToken } from '../chat/util';
 import { CuratedList } from '../readingList/CuratedList';
 
 function loadElement() {
+  console.log('curated list pack')
   getUserDataAndCsrfToken().then(({ currentUser }) => {
     const root = document.getElementById('reading-list');
     if (root) {
+      console.log('rendering CuratedList')
       render(
         <CuratedList
-          // availableTags={currentUser.followed_tag_names}
-          // statusView={root.dataset.view}
+          availableTags={currentUser.followed_tag_names}
+          statusView={root.dataset.view}
         />,
         root,
         root.firstElementChild,

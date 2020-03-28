@@ -385,6 +385,8 @@ Rails.application.routes.draw do
 
   get "/top/:timeframe" => "stories#index"
 
+  # Delete a Curated List in its entirety, then redirect to reading list dash
+  delete "/curated_lists/:curated_list_id", to: "curated_lists#destroy"
   # Remove the association between a curated list and an article
   delete "/curated_list_articles/:curated_list_id/:article_id", to: "curated_list_articles#destroy"
 

@@ -385,6 +385,9 @@ Rails.application.routes.draw do
 
   get "/top/:timeframe" => "stories#index"
 
+  # Remove the association between a curated list and an article
+  delete "/curated_list_articles/:curated_list_id/:article_id", to: "curated_list_articles#destroy"
+
   get "/:timeframe" => "stories#index", :constraints => { timeframe: /latest/ }
 
   # Legacy comment format (might still be floating around app, and external links)

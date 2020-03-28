@@ -402,7 +402,7 @@ Rails.application.routes.draw do
 
   get "/:username/curated_lists/:slug", to: "curated_lists#show"
   post "/:username/curated_lists", to: "curated_lists#create"
-  post "/:username/curated_lists/:curated_list_slug/curated_list_articles", to: "curated_list_articles#create"
+  post "/:username/curated_lists/:slug/curated_list_articles", to: "curated_list_articles#create"
 
   get "/:username/:slug/:view" => "stories#show",
       :constraints => { view: /moderate/ }

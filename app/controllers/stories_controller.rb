@@ -226,7 +226,7 @@ class StoriesController < ApplicationController
 
   def retrieve_curated_list_info
     user_lists = CuratedList.where(user_id: session_current_user_id)
-    @curated_lists = CuratedListSerializer.new(user_lists).to_json
+    @curated_lists = CuratedListSerializer.new(user_lists).light_to_json
   end
 
   def assign_feed_stories

@@ -259,7 +259,10 @@ export class ReadingList extends Component {
           </div>
           <div className='curated-lists'>
             <h2>Curated Lists</h2>
-            <button className='show-form-btn' onClick={() => this.toggleVisibility()}>{this.state.isHidden ? 'Add New List' : 'Hide'}</button>
+            <ul className='curated-list-names'>
+              { listElements }
+            </ul>
+            <button className={`show-form-btn_${this.state.isHidden}`} onClick={() => this.toggleVisibility()}>{this.state.isHidden ? 'Add New List' : 'Hide'}</button>
             { !this.state.isHidden && 
             <NewListForm
               visibility={this.toggleVisibility}
@@ -267,9 +270,6 @@ export class ReadingList extends Component {
               updateCuratedLists={this.updateCuratedLists}
             /> 
             }
-            <ul className='curated-list-names'>
-              { listElements }
-            </ul>
           </div>
         </div>
 

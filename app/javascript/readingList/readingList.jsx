@@ -259,8 +259,7 @@ export class ReadingList extends Component {
           </div>
           <div className='curated-lists'>
             <h2>Curated Lists</h2>
-            {/* on click, display addCuratedList form */}
-            <button onClick={() => this.toggleVisibility()}>{this.state.isHidden ? 'Add New List' : 'Hide'}</button>
+            <button className='show-form-btn' onClick={() => this.toggleVisibility()}>{this.state.isHidden ? 'Add New List' : 'Hide'}</button>
             { !this.state.isHidden && 
             <NewListForm
               visibility={this.toggleVisibility}

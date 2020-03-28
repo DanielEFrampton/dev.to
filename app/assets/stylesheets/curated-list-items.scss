@@ -1,0 +1,20 @@
+@import 'variables';
+@import '_mixins';
+
+.show-form-btn {
+  background-color: $bold-blue;
+  color: #fff;
+  cursor: pointer;
+  font-family: $helvetica;
+  font-weight: 900;
+  height: 2.5em;
+  width: 10em;
+  border-radius: 10%;
+  &:hover {
+    @include themeable(
+      background,
+      theme-container-background-hover,
+      lighten($bold-blue, 10%)
+    );
+  }
+}

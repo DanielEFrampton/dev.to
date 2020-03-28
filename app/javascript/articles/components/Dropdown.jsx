@@ -1,6 +1,5 @@
 import { h } from 'preact';
 import { articlePropTypes } from '../../src/components/common-prop-types/article-prop-types';
-// import { userData } from '../../../assets/javascripts/utilities/userData';
 
 export const Dropdown = ({ article }) => {
   const curatedListsAndIDs = {};
@@ -29,14 +28,14 @@ export const Dropdown = ({ article }) => {
 
   const dropdownOptions = curatedLists.map(list => {
     curatedListsAndIDs[list.slug] = list.articles;
-    console.log(article.id);
-    // if (curatedListsAndIDs[list.slug].includes(article.id)) {
-    //   return (
-    //     <option disabled value={list.slug}>
-    //       {list.name}
-    //     </option>
-    //   );
-    // }
+
+    if (article && curatedListsAndIDs[list.slug].includes(article.id)) {
+      return (
+        <option disabled value={list.slug}>
+          {list.name}
+        </option>
+      );
+    }
     return <option value={list.slug}>{list.name}</option>;
   });
 
@@ -56,4 +55,5 @@ export const Dropdown = ({ article }) => {
 
 Dropdown.propTypes = {
   article: articlePropTypes.isRequired,
+  // curatedLists: articlePropTypes.isRequired,
 };

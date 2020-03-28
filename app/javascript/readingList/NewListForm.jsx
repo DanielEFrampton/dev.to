@@ -29,12 +29,13 @@ export class NewListForm extends Component {
                               description: this.state.description,
                               slug: this.sluggify(this.state.name)}),
         credentials: 'same-origin',
-      });
+      }).then(
+        () => window.location.reload()
+      );
       this.setState({
         name: '',
         description: ''
       })
-      window.location.reload()
     }
   }
 

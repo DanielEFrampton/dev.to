@@ -18,7 +18,7 @@ export class NewListForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    if (this.state.name !== '') {
+    if (this.state.name !== '' && this.state.description !== '') {
       window.fetch(`/${this.props.username}/curated_lists`, {
         method: 'POST',
         headers: {
@@ -35,7 +35,7 @@ export class NewListForm extends Component {
         description: ''
       })
       window.location.reload()
-    } 
+    }
   }
 
   sluggify = name => {

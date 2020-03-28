@@ -14,6 +14,12 @@ class CuratedListsController < ApplicationController
                  end
   end
 
+  def destroy
+    curated_list = CuratedList.find(params[:curated_list_id])
+    curated_list.destroy
+    render json: { result: "success" }.to_json
+  end
+
   private
 
   def id_for_username(username)

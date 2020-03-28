@@ -1,7 +1,7 @@
 @import 'variables';
 @import '_mixins';
 
-.show-form-btn, {
+.show-form-btn_true, {
   background-color: $bold-blue;
   color: #fff;
   cursor: pointer;
@@ -10,6 +10,25 @@
   font-size: .9em;
   height: 2.5em;
   width: 10em;
+  border-radius: 10%;
+  &:hover {
+    @include themeable(
+      background,
+      theme-container-background-hover,
+      lighten($bold-blue, 10%)
+    );
+  }
+}
+
+.show-form-btn_false, {
+  background-color: $bold-blue;
+  color: #fff;
+  cursor: pointer;
+  font-family: $helvetica;
+  font-weight: 900;
+  font-size: .8em;
+  height: 2.2em;
+  width: 8em;
   border-radius: 10%;
   &:hover {
     @include themeable(

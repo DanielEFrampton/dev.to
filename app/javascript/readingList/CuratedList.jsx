@@ -9,6 +9,9 @@ export class CuratedList extends Component {
   }
 
   render() {
+    if (window.location.href === 'http://localhost:3000/readinglist' || window.location.href === 'http://localhost:3000/') {
+      return; 
+    }
     let curatedCards = this.props.curatedListData.articles.map(article => {
       article = JSON.parse(article)
       return (

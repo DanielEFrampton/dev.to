@@ -87,3 +87,33 @@
   margin-top: .3em;
   margin-bottom: .3em;
 }
+
+// curated list card styling 
+
+.curated-list-container {
+
+}
+
+.article-card {
+  color: black;
+  cursor: pointer;
+}
+
+.remove-article-button {
+  background-color: $bold-blue;
+  color: #fff;
+  cursor: pointer;
+  font-family: $helvetica;
+  font-weight: 700;
+  font-size: .7em;
+  height: 2.2em;
+  width: 10em;
+  border-radius: 10%;
+  &:hover {
+    @include themeable(
+      background,
+      theme-container-background-hover,
+      lighten(red, 10%)
+    );
+  }
+}

@@ -12,11 +12,13 @@ export class CuratedList extends Component {
     let curatedCards = this.props.curatedListData.articles.map(article => {
       article = JSON.parse(article)
       return (
-        <a className="article-card" href={article.path}>
-          <h1 className="item-title">{article.title}</h1>
-          <p className='item-description'>{article.description}</p>
-          <button className='remove-article-button'>Remove From List</button>
-        </a>
+        <div className='article-card' >
+          <a className="article-card-link" href={article.path}>
+            <h1 className="item-title">{article.title}</h1>
+            <p className='item-description'>{article.description}</p>
+            <button className='remove-article-button'>Remove From List</button>
+          </a>
+        </div>
       )
     })
     return ( 

@@ -97,6 +97,14 @@
 .article-card {
   color: black;
   cursor: pointer;
+  border: 2px solid black;
+  border-radius: 5%;
+  padding: 1em;
+  margin: 2em;
+}
+
+.article-card-link {
+  color: black;
 }
 
 .remove-article-button {

@@ -32,7 +32,7 @@ export class CuratedList extends Component {
       },
       credentials: 'same-origin',
     }).then(
-      window.location.pathname = '/readinglist'
+      () => window.location.pathname = '/readinglist'
     );
   };
 

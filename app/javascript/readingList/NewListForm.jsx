@@ -44,7 +44,7 @@ export class NewListForm extends Component {
     const { name, description } = this.state
     return (
 
-      <form className='new-list-form' onSubmit={this.handleSubmit}>
+      <form className='new-list-form' onSubmit={this.handleSubmit} autocomplete='off'>
         <input
           className='new-list-form__name'
           type="text"

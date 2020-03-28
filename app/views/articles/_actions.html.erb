@@ -9,6 +9,11 @@
     <button id="reaction-butt-readinglist" class="article-reaction-butt readinglist-reaction-button" data-category="readinglist" alt="unicorn-emoji" title="reading list">
       <img alt="reading list" src="<%= asset_path("emoji/emoji-one-bookmark.png") %>" /><span class="reaction-number" id="reaction-number-readinglist"></span>
     </button>
+    <div id="articleID" data-id="<%= @article.id %>"></div>
+
+    <div class=“curated-list-container” id=“curated-list” data-curated-lists=“<%= @curated_lists %>“>
+    </div>
+    <%= javascript_pack_tag "Dropdown", defer: true %>
     <a class="article-actions-tweet-button"
       id="article-actions-tweet-button"
       rel="noopener"

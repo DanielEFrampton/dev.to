@@ -63,15 +63,15 @@ export class CuratedList extends Component {
         {this.props.curatedListData.name}
       </h1>
       <a className='back-to-list-btn' href='/readinglist'>Back to Reading List</a>
+      <section className='curated-cards'>
+          {curatedCards}
+      </section>
       <button
         className='delete-list-button'
         onClick={() => this.deleteList()}
       >
         Delete List
       </button>
-      <section className='curated-cards'>
-          {curatedCards}
-      </section>
     </div>
     )
   }

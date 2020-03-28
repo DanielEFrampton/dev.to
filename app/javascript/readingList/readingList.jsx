@@ -161,16 +161,9 @@ export class ReadingList extends Component {
     );
   }
   toggleVisibility() {
-  //  if (this.state.isHidden === true) {
-  //    this.state.isHidden = false;
-  //  } else {
-  //    this.state.isHidden = true;
-  //  }
-  //  console.log(this.state.isHidden);
   this.setState({
     isHidden: !this.state.isHidden
   })
-   
   }
 
   render() {

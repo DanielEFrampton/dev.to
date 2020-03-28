@@ -6,9 +6,7 @@ function loadElement() {
   getUserDataAndCsrfToken().then(({ currentUser }) => {
     const root = document.getElementById('curated-list');
     const curatedListData = JSON.parse(root.dataset.curatedLists);
-    console.log('line 9:', curatedListData[0])
     if (root) {
-      console.log('rendering CuratedList:', JSON.parse(root.dataset.curatedLists))
       render(
         <CuratedList
           curatedListData={curatedListData[0]}

@@ -87,3 +87,61 @@
   margin-top: .3em;
   margin-bottom: .3em;
 }
+
+// curated list card styling 
+
+.curated-list-container {
+
+}
+
+.article-card {
+  color: black;
+  cursor: pointer;
+  border: 2px solid black;
+  border-radius: 5%;
+  padding: 1em;
+  margin: 2em;
+}
+
+.article-card-link {
+  color: black;
+}
+
+.back-to-list-btn {
+  background-color: $bold-blue;
+  color: #fff;
+  cursor: pointer;
+  font-family: $helvetica;
+  padding: .5em;
+  font-weight: 700;
+  font-size: .8em;
+  height: 2.5em;
+  width: 12em;
+  border-radius: 10%;
+  &:hover {
+    @include themeable(
+      background,
+      theme-container-background-hover,
+      lighten($bold-blue, 20%)
+    );
+  }
+}
+
+.remove-article-button {
+  background-color: $bold-blue;
+  color: #fff;
+  cursor: pointer;
+  font-family: $helvetica;
+  font-weight: 700;
+  font-size: .7em;
+  height: 2.2em;
+  width: 10em;
+  border-radius: 10%;
+  &:hover {
+    @include themeable(
+      background,
+      theme-container-background-hover,
+      lighten(red, 10%)
+    );
+  }
+}

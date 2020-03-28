@@ -1,6 +1,6 @@
 class CuratedListsController < ApplicationController
   def show
-    found_list = CuratedList.where("user_id = ? AND slug = ?", id_for_username(params[:username]), params[:slug]).first.to_json
+    found_list = CuratedList.where("user_id = ? AND slug = ?", id_for_username(params[:username]), params[:slug]).first
     @curated_list = CuratedListSerializer.new([found_list]).to_json
   end
 

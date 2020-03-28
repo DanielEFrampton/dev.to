@@ -22,6 +22,20 @@ export class CuratedList extends Component {
     );
   };
 
+  deleteList() {
+    const curatedListId = this.props.curatedListData.id;
+    window.fetch(`/curated_lists/${curatedListId}`, {
+      method: 'DELETE',
+      headers: {
+        'X-CSRF-Token': window.csrfToken,
+        'Content-Type': 'application/json',
+      },
+      credentials: 'same-origin',
+    }).then(
+      window.location.pathname = '/readinglist'
+    );
+  };
+
   render() {
     if (window.location.href === 'http://localhost:3000/readinglist' || window.location.href === 'http://localhost:3000/') {
       return;
@@ -49,6 +63,12 @@ export class CuratedList extends Component {
         {this.props.curatedListData.name}
       </h1>
       <a className='back-to-list-btn' href='/readinglist'>Back to Reading List</a>
+      <button
+        className='delete-list-button'
+        onClick={() => this.deleteList()}
+      >
+        Delete List
+      </button>
       <section className='curated-cards'>
           {curatedCards}
       </section>

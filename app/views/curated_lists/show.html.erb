@@ -18,9 +18,7 @@
 <% end %>
 
 <div class="home">
-  <div class="item-list-container" id="reading-list" data-algolia-key="<%= @secured_algolia_key %>" data-view="<%= @view %>">
-  </div>
-  <div class="curated-list-container" id="curated-list" data-curated-lists="<%= @curated_lists %>">
+  <div class="curated-list-container" id="curated-list" data-curated-lists="<%= @curated_list %>">
   </div>
 </div>
-<%= javascript_pack_tag "curatedList", defer: true %>
+<%= javascript_pack_tag "CuratedList", defer: true %>

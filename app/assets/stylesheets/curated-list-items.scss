@@ -145,3 +145,23 @@
     );
   }
 }
+
+.delete-list-button {
+  background-color: red;
+  margin-top: 5em;
+  color: #fff;
+  cursor: pointer;
+  font-family: $helvetica;
+  font-weight: 700;
+  font-size: .7em;
+  height: 2.2em;
+  width: 10em;
+  border-radius: 10%;
+  &:hover {
+    @include themeable(
+      background,
+      theme-container-background-hover,
+      lighten(red, 10%)
+    );
+  }
+}

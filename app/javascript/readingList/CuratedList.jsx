@@ -26,6 +26,7 @@ export class CuratedList extends Component {
       <h1>
         {this.props.curatedListData.name}
       </h1>
+      <a className='back-to-list-btn' href='/readinglist'>Back to Reading List</a>
       <section className='curated-cards'>
           {curatedCards}
       </section>

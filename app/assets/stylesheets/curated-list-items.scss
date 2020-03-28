@@ -107,6 +107,26 @@
   color: black;
 }
 
+.back-to-list-btn {
+  background-color: $bold-blue;
+  color: #fff;
+  cursor: pointer;
+  font-family: $helvetica;
+  padding: .5em;
+  font-weight: 700;
+  font-size: .8em;
+  height: 2.5em;
+  width: 12em;
+  border-radius: 10%;
+  &:hover {
+    @include themeable(
+      background,
+      theme-container-background-hover,
+      lighten($bold-blue, 20%)
+    );
+  }
+}
+
 .remove-article-button {
   background-color: $bold-blue;
   color: #fff;

@@ -14,4 +14,17 @@ class CuratedListSerializer
       }
     end)
   end
+
+  def light_to_json
+    JSON.generate(@curated_lists.map do |curated_list|
+      {
+        "name" => curated_list.name,
+        "description" => curated_list.description,
+        "slug" => curated_list.slug,
+        "articles" => curated_list.articles.map do |article|
+          article.id
+        end
+      }
+    end)
+  end
 end
